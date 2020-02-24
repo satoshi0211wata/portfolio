@@ -1,128 +1,196 @@
 <template>
-<div>
-  <LikeHeader>
-    <h3>初めまして</h3>
-  </LikeHeader>
-  <LikeNumber :totalNumber="number" @my-click="incrementNumber"></LikeNumber>
-  <button @click="currentComponent = 'Home'">Home</button>
-  <button @click="currentComponent = 'About'">About</button>
-  <keep-alive>
-    <component :is="currentComponent"></component>
-  </keep-alive>
-  <div style="padding: 10rem;">
-    <h2>イベントフォーム</h2>
-    <EventTitle v-model="eventData.title"></EventTitle>
-    <label for="maxNumber">最大人数</label>
-    <input 
-      id="maxNumber" 
-      type="number"
-      v-model.number="eventData.maxNumber"
+  <div class="main">
+    <body id="index">
+      <div id="wrap">
+        <div class="content">
+          <h1>Welcome to my portfolio website!!</h1>
+          <p>このWebサイトは、学習用サンプルとして作成する「SNAPPERS」という架空の写真家のポートフォリオサイトです。<br>チュートリアル形式でHTMLとCSSを学びながら完成を目指します。楽しんで作成しましょう。</p>
+          <p class="btn"><a href="portfolio.html">My Portfolio</a></p>
+        </div>
+      </div>
+      <footer>
+        <small>(C)2017 Hattori-studio.</small>
+      </footer>
+    </body>
+  </div>
+    <!-- <button @click="myAnimation ='slide'">Slide</button>
+    <button @click="myAnimation ='fade'">Fade</button>
+    <p>{{ myAnimation }}</p>
+    <br>
+    <button @click="add">追加</button>
+    <ul style="width: 200px; margin: auto;">
+      <transition-group name="fade">
+      <li 
+        style="cursor: pointer;"
+        v-for="(number, index) in numbers"
+        :key="number"
+        @click="remove(index)" >{{ number }}
+      </li>
+      </transition-group>
+    </ul>
+    <button @click="show = !show">切り替え</button>
+    <br>
+    <br>
+    <transition
+      :css="false"
+      @enter="enter"
+      @leave="leave"
     >
-    <P>{{eventData.maxNumber}}</p>
-      <label for="host">主催者</label>
-    <input 
-      id="host" 
-      type="text"
-      v-model.trim="eventData.host"
+    <div class= "circle" v-if="show"></div>
+    </transition>
+    <button @click="myComponent='ComponentA'">ComponentA</button>
+    <button @click="myComponent='ComponentB'">ComponentB</button>
+    <transition name="fade" mode="out-in">
+    <component :is="myComponent"></component>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <p v-if="show" key="bye">さよなら</p>
+      <p v-if="!show" key="hello">こんにちは</p>
+    </transition>
+    <transition 
+      enter-active-class="animated bounce"
+      leave-active-class="animated shake"
+      appear>
+      <p v-if="show">hello</p>
+    </transition>
+    <transition 
+      :name="myAnimation" 
+      appear
     >
-    <Pre>{{eventData.host}}</Pre>
-    <label for="detail">イベントの内容</label>
-    <textarea
-      id="detail"
-      cols="30"
-      rows="10"
-      v-model="eventData.detail">
-    </textarea>
-    <p style="white-space: pre;">{{ eventData.detail }}</p>
-    <input 
-      type= "checkbox"
-      id="isPrivate"
-      v-model="eventData.isPrivate">
-    <label for="isPrivate">非公開</label>
-    <P>{{ eventData.isPrivate }}</P>
-    <p>参加条件</p>
-    <input 
-      type="checkbox"
-      id="10"
-      value="10代"
-      v-model="eventData.target"
-      >
-      <label for="10">10代</label>
-    <input 
-      type="checkbox"
-      id="20"
-      value="20代"
-      v-model="eventData.target"
-      >
-      <label for="20">20代</label>
-    <input 
-      type="checkbox"
-      id="30"
-      value="30代"
-      v-model="eventData.target"
-      >
-      <label for="30">30代</label>
-      <p>{{ eventData.target }}</p>
-      <p>参加費</p>
-      <input
-        type="radio"
-        id="free"
-        value="無料"
-        v-model="eventData.price"
-      >
-      <label for="paid">無料</label>
-            <input
-        type="radio"
-        id="paid"
-        value="有料"
-        v-model="eventData.price"
-      >
-      <label for="free">有料</label>
-      <p>開催場所</p>
-      <select v-model="eventData.location">
-        <option v-for="location in locations"
-         :key="location">{{ location }}</option>
-      </select>
-      <P>{{ eventData.location }}</P>
-   </div>
-</div>
+    <div v-if="show">
+      <p>bye</p>
+    </div>
+    </transition>
+  </div>
+   -->
 </template>
 
 <script>
-import LikeHeader from "./components/LikeHeader.vue";
-import Home from "./components/Home.vue";
-import About from "./components/About.vue";
-import EventTitle from "./components/EventTitle.vue";
+// import ComponentA from "./components/ComponentA";
+// import ComponentB from "./components/ComponentB";
+
+
 
 export default {
-  data() {
-    return {
-      number:14,
-      currentComponent: "Home",
-      locations: ["東京", "大阪", "名古屋"],
-      eventData: {
-        title:"",
-        maxNumber: 0,
-        host:"",
-        detail:"",
-        isPrivate: false,
-        target: [],
-        price: "無料",
-        location:"東京"
-      }
-    };
-  },
-  components: {
-    LikeHeader,
-    Home,
-    About,
-    EventTitle,
-  },
-  methods: {
-    incrementNumber (value) {
-      this.number = value;
+  // components : {
+  //  ComponentA,
+  //  ComponentB
+  // },
+  // data() {
+  //   return {
+  //     numbers: [0,1,2],
+  //     nextNumber: 3,
+  //     show: true,
+  //     myAnimation : "slide",
+  //     myComponent : "ComponentA"
+  //   };
+  // },
+  // methods: {
+  //   randomIndex() {
+  //     return Math.floor(Math.random() * this.numbers.length);
+  //   },
+  //   add() {
+  //     this.numbers.splice(this.randomIndex(),0,this.nextNumber);
+  //     this.nextNumber += 1;
+  //   },
+  //   remove(index) {
+  //     this.numbers.splice(index,1);
+  //     },
+  //   beforeEnter(el) {
+  //     el.style.transform = "scale(0)";
+  //   },
+  //   enter(el, done) {
+  //     let scale = 0;
+  //     const interval = setInterval(() => {
+  //      el.style.transform = `scale(${scale})`;
+  //      scale += 0.1
+  //      if ( scale > 1) {
+  //        clearInterval(interval);
+  //        done();
+  //      }
+  //     }, 20);
+  //   },
+  //   leave(el, done) {
+  //     let scale = 1;
+  //     const interval = setInterval(() => {
+  //      el.style.transform = `scale(${scale})`;
+  //      scale -= 0.1
+  //      if ( scale < 0) {
+  //        clearInterval(interval);
+  //        done();
+  //      }
+  //     }, 20);
+  //   },
+  // }
+};
+</script>
 
-    }
+<style scoped>
+#index {
+  background-image: url(/images/IMG_8476.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+/* .circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 100px;
+  background-color: deeppink;
+}
+
+.fade-move {
+  transition: transform 1s;
+}
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-leave {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: opacity 0.5s;
+  position: absolute;
+  width: 200px;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+}
+.slide-enter-active {
+  animation: slide-in 0.5s;
+  transition:opacity 1s;
+}
+
+.slide-leave-active {
+  animation: slide-in 0.5s reverse;
+  transition:opacity 1s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
   }
 }
-</script>
+.main {
+  width:70%;
+  margin: auto;
+  padding:5rem;
+  text-align: center;
+} */
+
+</style>
